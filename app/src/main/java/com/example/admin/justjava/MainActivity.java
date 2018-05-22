@@ -19,16 +19,28 @@ import android.widget.TextView;
 import java.text.NumberFormat;
 
 
+
+
+
+
 /**
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnOrder;
+    private TextView quantityTextView;
+    private TextView priceTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
          btnOrder = (Button)findViewById(R.id.button_order);
+         quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+         priceTextView = (TextView) findViewById(R.id.price_text_view);
+
          btnOrder.setOnClickListener(this);
     }
 
@@ -45,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * This method displays the given quantity value on the screen.
      */
     private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+
         quantityTextView.setText("" + number);
     }
 
@@ -53,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * This method displays the given price on the screen.
      */
     private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
 
