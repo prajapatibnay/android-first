@@ -28,6 +28,8 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnOrder;
+    Button btnIncrement;
+    Button btnDecrement;
     private TextView quantityTextView;
     private TextView priceTextView;
 
@@ -35,9 +37,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+         setContentView(R.layout.activity_main);
 
          btnOrder = (Button)findViewById(R.id.button_order);
+
+         btnIncrement = (Button)findViewById(R.id.button_increment);
+
+         btnDecrement = (Button)findViewById(R.id.button_decrement);
+
          quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
 
          priceTextView = (TextView) findViewById(R.id.price_text_view);
@@ -52,6 +59,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int numberOfcoffees = 5;
         display(numberOfcoffees);
         displayPrice(numberOfcoffees * 5);
+    }
+
+    public void submitIncrement() {
+        int plus = 6;
+        display(plus);
+        displayPrice(plus * 6);
+    }
+
+    public void submitDecrement() {
+        int minus = 4;
+        display(minus);
+        displayPrice(minus * 4);
     }
 
     /**
@@ -71,14 +90,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id){
+    public void onClick(View v)
+    {
+        int a = v.getId();
+        int b = v.getId();
+        int c = v.getId();
+
+        switch (a)
+        {
             case R.id.button_order:
-                Log.i("mainActivity", "butn order clickded");
+                Log.i("mainActivity", "butn order clicked");
              submitOrder();
+             break;
+        }
+
+        switch (b)
+        {
+            case R.id.button_increment:
+                Log.i("mainActivity", "butn plus clicked");
+                submitIncrement();
 
                 break;
         }
+
+        switch (c)
+        {
+            case R.id.button_decrement:
+                Log.i("mainActivity", "butn minus clicked");
+                submitDecrement();
+
+                break;
+        }
+      }
+
     }
-}
