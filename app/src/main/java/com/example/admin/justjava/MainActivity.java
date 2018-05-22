@@ -19,10 +19,6 @@ import android.widget.TextView;
 import java.text.NumberFormat;
 
 
-
-
-
-
 /**
  * This app displays an order form to order coffee.
  */
