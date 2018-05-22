@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
          btnOrder = (Button)findViewById(R.id.button_order);
          quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+
          priceTextView = (TextView) findViewById(R.id.price_text_view);
 
          btnOrder.setOnClickListener(this);
