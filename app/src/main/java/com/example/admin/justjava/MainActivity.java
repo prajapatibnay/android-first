@@ -1,5 +1,5 @@
 /**
- * IMPORTANT: Make sure you are using the correct package name. 
+ * IMPORTANT: Make sure you are using the correct package name.
  * This example uses the package name:
  * package com.example.android.justjava
  * If you get an error when copying this code into Android studio, update it to match teh package name found
@@ -23,6 +23,8 @@ import java.text.NumberFormat;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    int quantity = 0;
+
     Button btnOrder;
     Button btnIncrement;
     Button btnDecrement;
@@ -46,77 +48,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          priceTextView = (TextView) findViewById(R.id.price_text_view);
 
          btnOrder.setOnClickListener(this);
+
+         btnIncrement.setOnClickListener(this);
+
+         btnDecrement.setOnClickListener(this);
+
     }
 
-    /**
-     * This method is called when the order button is clicked.
-     */
-    public void submitOrder() {
-        int numberOfcoffees = 5;
-        display(numberOfcoffees);
-        displayPrice(numberOfcoffees * 5);
-    }
 
-    public void submitIncrement() {
-        int plus = 6;
-        display(plus);
-        displayPrice(plus * 6);
-    }
 
-    public void submitDecrement() {
-        int minus = 4;
-        display(minus);
-        displayPrice(minus * 4);
-    }
-
-    /**
-     * This method displays the given quantity value on the screen.
-     */
-    private void display(int number) {
-
-        quantityTextView.setText("" + number);
-    }
-
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
 
     @Override
     public void onClick(View v)
     {
-        int a = v.getId();
-        int b = v.getId();
-        int c = v.getId();
-
-        switch (a)
+        int id = v.getId();
+        switch (id)
         {
             case R.id.button_order:
                 Log.i("mainActivity", "butn order clicked");
-             submitOrder();
+                int total = quantity * 5;
+                priceTextView.setText(NumberFormat.getCurrencyInstance().format(total));
              break;
-        }
 
-        switch (b)
-        {
-            case R.id.button_increment:
+             case R.id.button_increment:
                 Log.i("mainActivity", "butn plus clicked");
-                submitIncrement();
-
+                quantity++;
+                quantityTextView.setText(""+quantity);
                 break;
-        }
 
-        switch (c)
-        {
-            case R.id.button_decrement:
+                case R.id.button_decrement:
                 Log.i("mainActivity", "butn minus clicked");
-                submitDecrement();
-
-                break;
+                 quantity--;
+                 if(quantity<0)
+                 {
+                 quantity=0;
+                 }
+                 quantityTextView.setText(""+quantity);
+                 break;
+         }
         }
-      }
+
 
     }
