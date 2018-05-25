@@ -79,4 +79,12 @@
 
       />
 
+    <TextView
+        android:id="@+id/order_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thank you for Ordering!"
+        android:gravity="center"
+        android:layout_marginTop="10dp" />
+
 </LinearLayout>

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnDecrement;
     private TextView quantityTextView;
     private TextView priceTextView;
+    private TextView orderMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
 
          priceTextView = (TextView) findViewById(R.id.price_text_view);
+
+         orderMessage = (TextView) findViewById(R.id.order_msg);
+         orderMessage.setVisibility(View.GONE);
 
          btnOrder.setOnClickListener(this);
 
@@ -68,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.i("mainActivity", "butn order clicked");
                 int total = quantity * 5;
                 priceTextView.setText(NumberFormat.getCurrencyInstance().format(total));
+                orderMessage.setVisibility(View.VISIBLE);
+
              break;
 
              case R.id.button_increment:
